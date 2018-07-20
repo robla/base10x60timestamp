@@ -25,7 +25,7 @@ def parse_arguments():
     return parser.parse_args()
 
 
-def get_base64_digit(x):
+def get_base60_digit(x):
     # some code adapted from http://stackoverflow.com/questions/561486/
     ALPHABET = string.digits + string.ascii_uppercase + \
         string.ascii_lowercase + '-_'
@@ -33,14 +33,14 @@ def get_base64_digit(x):
     r = x % BASE
     if x < 0 or x >= BASE:
         raise BaseException(
-            str(x) + ' is out of range to represent as single base64 digit')
+            str(x) + ' is out of range to represent as single base60 digit')
     return(ALPHABET[r])
 
 
-def get_base64_time(ttup):
-    return get_base64_digit(ttup.tm_hour) + \
-        get_base64_digit(ttup.tm_min) + \
-        get_base64_digit(ttup.tm_sec)
+def get_base60_time(ttup):
+    return get_base60_digit(ttup.tm_hour) + \
+        get_base60_digit(ttup.tm_min) + \
+        get_base60_digit(ttup.tm_sec)
 
 
 def epoch_output(timestr, use_base60=False, use_utc=False, intreply=False):
@@ -68,7 +68,7 @@ def epoch_output(timestr, use_base60=False, use_utc=False, intreply=False):
         # we're just going to use UTC for this
         ttup = time.gmtime(retval)
         datepart = time.strftime("%Y%m%d-", ttup)
-        retval = datepart + get_base64_time(ttup)
+        retval = datepart + get_base60_time(ttup)
 
     return retval
 
