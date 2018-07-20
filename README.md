@@ -34,3 +34,23 @@ This makes the date timestamps sort reasonably on a system supporting lower asci
 Having "-" represent "UTC" reserves that character in a readable way.  It's possible that future versions might use other characters to represent a timezone offset.
 
 [RFC1924]: https://tools.ietf.org/html/rfc1924
+
+## epoch
+
+epoch is a utility to convert to/from seconds from epoch.
+
+    usage: epoch [-h] [-b] [-u] [-i] [timestr]
+
+    Convert string to or from epoch (as appropriate)
+
+    positional arguments:
+      timestr           string to convert
+
+    optional arguments:
+      -h, --help        show this help message and exit
+      -b, --base60time  use YYMMDD and base60 time
+      -u, --utc         show UTC
+      -i, --integer     round off to nearest second
+
+epoch is only tangentally related to base60time, because when I started
+using base10x60timestamps, this was the utility I added it to.
