@@ -1,5 +1,5 @@
 Utility to deal with timestamps, including a timestamp format of my
-own creation: "base60clock".
+own creation: "base10x60timestamp".
 
 The format:
 
