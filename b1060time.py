@@ -11,7 +11,7 @@ https://stackoverflow.com/a/561704/314034
 import argparse
 import datetime
 import dateutil.parser
-import pytz
+import dateutil.tz
 import string
 import sys
 import time
@@ -61,7 +61,7 @@ def parse_b1060_timestamp(ts):
     minute = ALPHABET_LOOKUP[ts[10]]
     second = ALPHABET_LOOKUP[ts[11]]
 
-    return datetime.datetime(year, month, day, hour, minute, second, 0, pytz.UTC)
+    return datetime.datetime(year, month, day, hour, minute, second, 0, dateutil.tz.UTC)
 
 
 def main(argv=None):
